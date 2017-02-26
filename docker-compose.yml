@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+  nginx:
+    image: nginx
+    links:
+      - website
+      - api
+    ports:
+      - "8000:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+  api:
+    image: node
+    volumes:
+      - ./api/:/app/
+    working_dir: /app/
+    command: npm start
+    ports:
+      - "80"
+    links:
+      - mongodb
+  website:
+    image: node
+    volumes:
+      - ./website/:/app/
+    working_dir: /app/
+    command: npm start
+    ports:
+      - "80"
+    links:
+      - api
+  mongodb:
+    image: mongo
+    expose:
+      - "80"
+    ports:
+      - "27017:27017"
+    volumes:
+      - /data/db
