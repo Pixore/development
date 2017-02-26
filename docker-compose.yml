@@ -6,6 +6,7 @@ services:
     links:
       - website
       - api
+      - editor
     ports:
       - "8000:80"
     volumes:
@@ -20,6 +21,14 @@ services:
       - "80"
     links:
       - mongodb
+  editor:
+    image: node
+    volumes:
+      - ./editor/:/app/
+    working_dir: /app/
+    command: npm start
+    ports:
+      - "80"
   website:
     image: node
     volumes:
@@ -28,8 +37,6 @@ services:
     command: npm start
     ports:
       - "80"
-    links:
-      - api
   mongodb:
     image: mongo
     expose:
