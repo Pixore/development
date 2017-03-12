@@ -21,8 +21,6 @@ services:
       - "80"
     links:
       - mongodb
-      - website
-      - editor
   editor:
     image: node
     volumes:
