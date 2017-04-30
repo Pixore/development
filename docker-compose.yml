@@ -17,7 +17,7 @@ services:
       - ./api/:/app/
     working_dir: /app/
     command: npm start
-    ports:
+    expose:
       - "80"
     links:
       - mongodb
@@ -29,7 +29,7 @@ services:
     environment:
       - PIXORE_PATH=editor
     command: npm start
-    ports:
+    expose:
       - "80"
   website:
     image: node
@@ -37,7 +37,7 @@ services:
       - ./website/:/app/
     working_dir: /app/
     command: npm start
-    ports:
+    expose:
       - "80"
   mongodb:
     image: mongo
