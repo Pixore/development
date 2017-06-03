@@ -10,6 +10,8 @@ stats.json
 files
 files-test
 
+.DS_Store
+
 nginx.final.conf
 
 npm-debug.log*
