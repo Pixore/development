@@ -23,20 +23,16 @@ services:
       - mongodb
   editor:
     build: ./editor
-    volumes:
-      - ./editor/:/app/
     working_dir: /app/
     environment:
       - PIXORE_PATH=editor
-    command: npm start
+    # command: npm start
     expose:
       - "80"
   website:
     build: ./website
-    volumes:
-      - ./website/:/app/
     working_dir: /app/
-    command: npm start
+    # command: ls
     expose:
       - "80"
   mongodb:
