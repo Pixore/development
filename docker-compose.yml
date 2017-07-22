@@ -24,15 +24,17 @@ services:
   editor:
     build: ./editor
     working_dir: /app/
+    volumes:
+      - ./editor/:/app/
     environment:
       - PIXORE_PATH=editor
-    # command: npm start
     expose:
       - "80"
   website:
     build: ./website
     working_dir: /app/
-    # command: ls
+    volumes:
+      - ./website/:/app/
     expose:
       - "80"
   mongodb:
