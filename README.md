@@ -5,7 +5,7 @@
 ```sh
 git clone https://github.com/Pixore/development.git pixore-dev && cd pixore-dev
 git submodule init && git submodule update
-git submodule foreach npm install
+git submodule foreach git checkout develop
 docker-compose build
 docker-compose up -d
 open http://localhost:8000
